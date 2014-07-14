@@ -40,7 +40,7 @@ public: //display
     void printPath();
 private: //parallel
     inline void setMap( int mapIndex ){ _currentMap = _map[mapIndex]; _currentMapIndex = mapIndex; }
-    inline void unsetMap() { _currentMap = nullptr; }
+    inline void unsetMap() { _currentMap = NULL; }
 private: //map
     Graph* _map[THREADS];
     Graph* _currentMap;

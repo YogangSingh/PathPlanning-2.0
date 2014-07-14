@@ -16,8 +16,8 @@ Graph::Graph( cv::Mat obstacleImage ){
     _mapWidth = _obstacleImage.cols;
     _obstacleMap = new vertex* [_mapHeight];
     _pathLength = 0;
-    _destination = nullptr;
-    _initial = nullptr;
+    _destination = NULL;
+    _initial = NULL;
     _dilationSize = 0;
     _dilationType = 1;
     _safeSpace = 0;
@@ -40,7 +40,7 @@ Graph::Graph( cv::Mat obstacleImage ){
 }
 
 Graph::Graph(){
-    _obstacleMap = nullptr;
+    _obstacleMap = NULL;
 }
 void Graph::loadMap(cv::Mat obstacleImage){
     if ( !_obstacleMap ) {
@@ -49,8 +49,8 @@ void Graph::loadMap(cv::Mat obstacleImage){
         _mapWidth = _obstacleImage.cols;
         _obstacleMap = new vertex* [_mapHeight];
         _pathLength = 0;
-        _destination = nullptr;
-        _initial = nullptr;
+        _destination = NULL;
+        _initial = NULL;
         _dilationSize = 0;
         _dilationType = 1;
         _safeSpace = 0;
@@ -129,8 +129,8 @@ void Graph::rebuildMap(GraphParameter p){
     _mapWidth = _obstacleImage.cols;
     _obstacleMap = new vertex* [_mapHeight];
     _pathLength = 0;
-    _destination = nullptr;
-    _initial = nullptr;
+    _destination = NULL;
+    _initial = NULL;
     _dilationSize = 0;
     _dilationType = 1;
     _safeSpace = 0;

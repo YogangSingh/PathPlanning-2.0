@@ -275,7 +275,7 @@ void PathPlanning::BFS(){
     bool found = false;
     _start[_currentMapIndex]->color = "GRAY";
     _start[_currentMapIndex]->weight = 0;
-    _start[_currentMapIndex]->pi = nullptr;
+    _start[_currentMapIndex]->pi = NULL;
     std::vector<vertex*> GRAY;
     GRAY.push_back( _start[_currentMapIndex] );
     while (!GRAY.empty() && found == false ) {
@@ -304,7 +304,7 @@ void PathPlanning::BFS(){
 
 void PathPlanning::buildPath(){
     _currentNode = _start[_currentMapIndex];
-    while(_currentNode->de != nullptr){
+    while(_currentNode->de != NULL){
         cv::Point2d temp;
         _currentNode = mergeWayPoint(_currentNode);
 #ifdef _DEBUG_PATHPLANNING_
@@ -313,7 +313,7 @@ void PathPlanning::buildPath(){
         temp.x = _currentNode->position.x * _voxelSize;
         temp.y = _currentNode->position.y * _voxelSize;
         _path[_currentMapIndex].push_back(temp);
-        if(_currentNode->de != nullptr){
+        if(_currentNode->de != NULL){
             _currentNode = _currentNode->de;
             _maxTravelDistance = _maxTravelDistanceCopy;
         }
@@ -321,7 +321,7 @@ void PathPlanning::buildPath(){
 }
 
 vertex* PathPlanning::mergeWayPoint(vertex* current){
-    if (_maxTravelDistance>0 && current->de != nullptr && current->de->de != nullptr) {
+    if (_maxTravelDistance>0 && current->de != NULL && current->de->de != NULL) {
         int dy10 = current->de->position.y - current->position.y,
             dx10 = current->de->position.x - current->position.x,
             dy21 = current->de->de->position.y - current->de->position.y,
@@ -346,7 +346,7 @@ vertex* PathPlanning::mergeWayPoint(vertex* current){
 }
 
 vertex* PathPlanning::mergeWayPoint(){
-    while (_maxTravelDistance>0 && _currentNode->de != nullptr && _currentNode->de->de != nullptr) {
+    while (_maxTravelDistance>0 && _currentNode->de != NULL && _currentNode->de->de != NULL) {
         int dy10 = _currentNode->de->position.y - _currentNode->position.y,
         dx10 = _currentNode->de->position.x - _currentNode->position.x,
         dy21 = _currentNode->de->de->position.y - _currentNode->de->position.y,
@@ -368,7 +368,7 @@ vertex* PathPlanning::mergeWayPoint(){
             int dx = _currentNode->position.x - _currentNode->de->position.x,
                 dy = _currentNode->position.y - _currentNode->de->position.y;
 #endif
-            while (_maxTravelDistance>0 && _currentNode->de != nullptr) {
+            while (_maxTravelDistance>0 && _currentNode->de != NULL) {
                 _maxTravelDistance -= 1.41 * _voxelSize;
                 _currentNode = _currentNode->de;
             }
@@ -431,7 +431,7 @@ Where:%s \n",_currentMapIndex,__FUNCTION__);
 
 PathPlanning::~PathPlanning(){
     for (int i = 0; i < THREADS; i++) {
-        if ( _map[i] != nullptr ) {
+        if ( _map[i] != NULL ) {
             printf("Map No.%d is destroyed!\n",i);
             delete _map[i];
         }
